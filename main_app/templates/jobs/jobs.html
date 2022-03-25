@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Job List</h1>
+{% for job in jobs_data %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{job.company}}</span>
+            <p>Job Title: {{job.jobTitle}}</p>
+            <p>Description: {{job.description}}</p>
+            <p>Salary: {{job.salary}}</p>
+            <p>Contact Info: {{job.contactInfo}}</p>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
