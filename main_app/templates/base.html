@@ -11,6 +11,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <header class="navbar-fixed">
@@ -18,16 +19,31 @@
         <div class="nav-wrapper">
           <ul>
             <li>
-              <a href="/" class="left brand-logo"> Job Collector</a>
+              <a href="{% url 'home' %}" class="left brand-logo"> Job Collector</a>
             </li>
           </ul>
           <ul class="right">
             <li>
-              <a href="/about">About</a>
+              <a href="{% url 'about' %}">About</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'jobs' %}">Jobs</a>
             </li>
             <li>
-              <a href="/jobs">Jobs</a>
+              <a href="{% url 'jobs_create' %}">Add a Job</a>
             </li>
+            <li>
+              <a href="{% url 'companies_index' %}">Company</a>
+            </li>
+            <li>
+              <a href="{% url 'companies_create' %}">Add a Company</a>
+            </li>
+            <li><a href="{% url 'logout' %}">Log out</a></li>
+            {% else %}
+            <li><a href="{% url 'signup' %}">Sign up</a></li>
+            <li><a href="{% url 'login' %}">Log in</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
